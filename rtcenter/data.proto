@@ -1,0 +1,54 @@
+syntax = "proto3";
+package vdsdata;
+import "google/protobuf/any.proto";
+option go_package="./rtcenter";
+
+message StringMsg {
+    string data = 1;
+}
+
+message Int32Msg {
+    int32 data = 1;
+}
+
+message Int64Msg {
+    int64 data = 1;
+}
+
+message DoubleMsg {
+    double data = 1;
+}
+
+/*
+以订阅快照为例:
+msgType:snapshot        string
+symbol:600000.SH        repeated string
+fields: [open,close]    repeated string
+*/
+message VDSReq {
+    map<string, string> req_map = 1;
+}
+
+/*
+以订阅快照为例：
+msgType：snapshot       string
+symbol：600000.SH       string
+updatetime:093000000    int32
+last:                   double
+open:                   double
+high:                   double
+low:                    double
+close:                  double
+preclose:               double
+volume:                 int64
+balance：               double
+*/
+
+message MapValue {
+    google.protobuf.Any value = 1;
+}
+
+
+message VDSRsp {
+    map<string, MapValue> rsp_map = 1;
+}

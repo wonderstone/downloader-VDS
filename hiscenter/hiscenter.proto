@@ -1,0 +1,260 @@
+syntax = "proto3";
+package hiscenter;
+option go_package="./hiscenter";
+
+// 历史接口服务
+service Hiscenter {
+  rpc Login (LoginRequest) returns (Response) {}
+  rpc CurrentUser (CurrentUserRequest) returns (Response) {}
+  rpc Column (ColumnRequest) returns (Response) {}
+  rpc FinanceCommon (FinanceCommonRequest) returns (Response) {}
+  rpc Balance (BalanceRequest) returns (Response) {}
+  rpc Income (IncomeRequest) returns (Response) {}
+  rpc Cashflow (CashflowRequest) returns (Response) {}
+  rpc PerformanceLetters (PerformanceLettersRequest) returns (Response) {}
+  rpc PerformanceForecast (PerformanceForecastRequest) returns (Response) {}
+  rpc FinIndicator (FinIndicatorRequest) returns (Response) {}
+  rpc Candle (CandleRequest) returns (Response) {}
+  rpc Alpha101 (Alpha101Request) returns (Response) {}
+  rpc Xbzq191alpha (Xbzq191alphaRequest) returns (Response) {}
+  rpc Calendar (CalendarRequest) returns (Response) {}
+  rpc IsTrading (IsTradingRequest) returns (Response) {}
+  rpc Lv1Snapshot (Lv1SnapshotRequest) returns (Response) {}
+  rpc Security (SecurityRequest) returns (Response) {}
+  rpc Lv2Snapshot (Lv2SnapshotRequest) returns (Response) {}
+  rpc Lv2Trade (Lv2TradeRequest) returns (Response) {}
+  rpc Lv2Entrust (Lv2EntrustRequest) returns (Response) {}
+  rpc Replay (ReplayRequest) returns (stream Response) {}
+  rpc DownloadCandle (DownloadCandleRequest) returns (stream Response) {}
+  rpc Timeline (TimelineRequest) returns (Response) {}
+  rpc Bargain (BargainRequest) returns (Response) {}
+}
+
+// 登录请求参数
+message LoginRequest {
+  string uname = 1;
+  string upwd = 2;
+  string userdata = 3;
+}
+
+// 当前登录用户参数
+message CurrentUserRequest {
+  string userdata = 1;
+}
+
+// 财务表字段请求参数
+message ColumnRequest {
+  string name = 1;
+  string userdata = 2;
+}
+
+// 财务数据请求参数
+message FinanceCommonRequest {
+  string name = 1;
+  string fields = 2;
+  string filter = 3;
+  int32 page = 4;
+  int32 pagesize = 5;
+  string userdata = 6;
+}
+
+// 资产负债请求参数
+message BalanceRequest {
+  string symbol = 1;
+  string start_date = 2;
+  string end_date = 3;
+  string fields = 4;
+  string userdata = 5;
+}
+
+// 利润分配请求参数
+message IncomeRequest {
+  string symbol = 1;
+  string start_date = 2;
+  string end_date = 3;
+  string fields = 4;
+  string userdata = 5;
+}
+
+// 现⾦流请求参数
+message CashflowRequest {
+  string symbol = 1;
+  string start_date = 2;
+  string end_date = 3;
+  string fields = 4;
+  string userdata = 5;
+}
+
+// 业绩快报请求参数
+message PerformanceLettersRequest {
+  string symbol = 1;
+  string start_date = 2;
+  string end_date = 3;
+  string fields = 4;
+  string userdata = 5;
+}
+
+// 业绩预告请求参数
+message PerformanceForecastRequest {
+  string symbol = 1;
+  string start_date = 2;
+  string end_date = 3;
+  string fields = 4;
+  string userdata = 5;
+}
+
+// 公司主要财务分析指标(新会计准则)请求参数
+message FinIndicatorRequest {
+  string symbol = 1;
+  string start_date = 2;
+  string end_date = 3;
+  string indicator = 4;
+  string userdata = 5;
+}
+
+// K线请求参数
+message CandleRequest {
+  string symbol = 1;
+  string start_date_time = 2;
+  string end_date_time = 3;
+  string candle_type = 4;
+  string fields = 5;
+  string adj = 6;
+  int32 count = 7;
+  string userdata = 8;
+}
+
+// Alpha101因子请求参数
+message Alpha101Request {
+  string symbol = 1;
+  string factor = 2;
+  string start_date_time = 3;
+  string end_date_time = 4;
+  string type = 5;
+  int32 count = 6;
+  string userdata = 7;
+}
+
+// Xbzq191alpha因子请求参数
+message Xbzq191alphaRequest {
+  string symbol = 1;
+  string factor = 2;
+  string start_date_time = 3;
+  string end_date_time = 4;
+  string type = 5;
+  int32 count = 6;
+  string userdata = 7;
+}
+
+// 日历请求参数
+message CalendarRequest {
+  string market = 1;
+  string year = 2;
+  string userdata = 3;
+}
+
+// 是否交易日请求参数
+message IsTradingRequest {
+  string market = 1;
+  string date = 2;
+  string userdata = 3;
+}
+
+// Lv1快照请求参数
+message Lv1SnapshotRequest {
+  string symbol = 1;
+  string start_date_time = 2;
+  string end_date_time = 3;
+  string fields = 4;
+  int32 page = 5;
+  int32 pagesize = 6;
+  string userdata = 7;
+}
+
+// 码表请求参数
+message SecurityRequest {
+  string symbol = 1;
+  string fields = 2;
+  string userdata = 3;
+}
+
+// Lv2快照请求参数
+message Lv2SnapshotRequest {
+  string symbol = 1;
+  string start_date_time = 2;
+  string end_date_time = 3;
+  string fields = 4;
+  int32 page = 5;
+  int32 pagesize = 6;
+  string userdata = 7;
+}
+
+// Lv2逐笔成交请求参数
+message Lv2TradeRequest {
+  string symbol = 1;
+  string start_date_time = 2;
+  string end_date_time = 3;
+  string fields = 4;
+  int32 page = 5;
+  int32 pagesize = 6;
+  string userdata = 7;
+}
+
+// Lv2逐笔委托请求参数
+message Lv2EntrustRequest {
+  string symbol = 1;
+  string start_date_time = 2;
+  string end_date_time = 3;
+  string fields = 4;
+  int32 page = 5;
+  int32 pagesize = 6;
+  string userdata = 7;
+}
+
+// 回放请求参数
+message ReplayRequest {
+  string symbol = 1;
+  string start_date_time = 2;
+  string end_date_time = 3;
+  int32 rate = 4;
+  string type = 5;
+  string userdata = 6;
+}
+
+// 下载K线请求参数
+message DownloadCandleRequest {
+  string symbol = 1;
+  string start_date_time = 2;
+  string end_date_time = 3;
+  string candle_type = 4;
+  string fields = 5;
+  string adj = 6;
+  string userdata = 7;
+}
+
+// 分时参数
+message TimelineRequest {
+  string symbol = 1;
+  int32 day = 2;
+  string userdata = 3;
+}
+
+// Lv1分笔明细请求参数
+message BargainRequest {
+  string symbol = 1;
+  string start_date_time = 2;
+  string end_date_time = 3;
+  int32 director = 4;
+  string fields = 5;
+  int32 page = 6;
+  int32 pagesize = 7;
+  string userdata = 8;
+}
+
+// 返回参数
+message Response {
+  int32 code = 1;
+  string text = 2;
+  string data = 3;
+  string userdata = 4;
+}

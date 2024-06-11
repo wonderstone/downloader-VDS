@@ -1,0 +1,9 @@
+user: admin
+password: XBZQ_vds_2023@
+hiscenter:
+    addr: 10.1.90.91:9905
+rtcenter:
+  level2:
+    addr: 10.1.90.91:9904
+  level1:
+    addr: 10.1.90.91:9901

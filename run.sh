@@ -1,0 +1,2 @@
+# run ./main -VDSConfigPath=./config.yaml -VQTYamlPath=./vqt-task/framework.yaml -outputCSVPath=./output
+./main -VDSConfigPath=./config.yaml -VQTYamlPath=./vqt-task/framework.yaml -outputCSVPath=./output
